@@ -1,0 +1,19 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": false
+  },
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Write(./.env)",
+      "Write(./.env.*)"
+    ]
+  }
+}
