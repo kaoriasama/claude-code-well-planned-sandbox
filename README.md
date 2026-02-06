@@ -2,7 +2,7 @@ Claude Code を安全に運用するための非エンジニア向けサンド�
 
 プログラミング経験がなくても Claude Code を使い始められることを想定して設計しました。
 
-Windows環境でClaude Code環境がない場合は、firsttime-setup.mdをClaud（チャットモード）に突っ込んで書き直させてください（自己責任でお願いします）
+Windows環境でClaude Code環境がない場合は、SETUP-FIRST-TIME.mdをClaud（チャットモード）に突っ込んで書き直させてください（自己責任でお願いします）
 
 ・速度よりも安全性とユーザーのコントロールを優先する
 
