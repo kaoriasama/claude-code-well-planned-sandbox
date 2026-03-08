@@ -176,7 +176,7 @@ Desktop App で：
 
 ### 「Permission denied」エラー
 
-`settings.local.json` の `allow` に必要な権限があるか確認。
+`settings.json` の `allow` に必要な権限があるか確認。
 
 ### 書き込みがブロックされる
 
