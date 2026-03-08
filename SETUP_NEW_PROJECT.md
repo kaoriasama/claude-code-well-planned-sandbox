@@ -23,6 +23,20 @@ cp -r factory ~/ClaudeWorkspace/（新しいプロジェクト名）
 cp -r factory ~/ClaudeWorkspace/new_project_name
 ```
 
+### Hook の実行権限を確認
+
+コピー時に実行権限が維持されているか確認します。
+
+```bash
+ls -la ~/ClaudeWorkspace/poetry-analysis/.claude/hooks/check_package_install.sh
+```
+
+`x` がなければ付与:
+
+```bash
+chmod +x ~/ClaudeWorkspace/poetry-analysis/.claude/hooks/check_package_install.sh
+```
+
 ---
 
 ## Step 2：Desktop App の Filesystem 設定を更新
