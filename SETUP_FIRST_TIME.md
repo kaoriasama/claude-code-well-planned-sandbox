@@ -75,6 +75,25 @@ cp -r factory ~/ClaudeWorkspace/
 mv ~/ClaudeWorkspace/factory ~/ClaudeWorkspace/project_1
 ```
 
+
+
+---
+
+## Step 3.5：Hook スクリプトに実行権限を付与
+
+
+```bash
+chmod +x ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+```
+
+成功時は何も表示されません。確認:
+
+```bash
+ls -la ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+```
+
+`-rwxr-xr-x` のように `x` が含まれていれば OK です。
+
 ---
 
 ## Step 4：Desktop App の設定（CLAUDE.md 共有用）
@@ -129,6 +148,14 @@ Desktop App で：
 
 許可を求められたら「Allow」→ 内容が表示されれば成功。
 
+
+---
+### Step 7: CLAUDE.md の編集
+
+`factory/CLAUDE.md` をテキストエディタで開き、
+`## Environment` セクションを自分の環境に合わせて編集します。
+
+
 ---
 
 ## 基本ワークフロー
@@ -154,7 +181,10 @@ Desktop App で：
 └─────────────────────────────────────────────────────┘
 ```
 
+
 ---
+
+
 
 ## 覚えておくと便利なこと
 
@@ -187,8 +217,85 @@ Desktop App で：
 
 Settings → Extensions で Filesystem が有効か確認。
 
+### `claude: command not found`
+
+PATH が通っていません。以下を試してください:
+
+```bash
+# インストール先を探す
+which claude
+ls ~/.local/bin/claude
+ls ~/.claude/bin/claude
+```
+
+見つかったパスを PATH に追加:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### Hook が動作しない
+
+改行コードを確認してください:
+
+```bash
+file ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+```
+
+「with CRLF line terminators」と出た場合:
+
+```bash
+sed -i '' 's/\r$//' ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+```
+
+
 ---
 
 ## 次のステップ
 
 2つ目以降のプロジェクトを作成する場合は `SETUP_NEW_PROJECT.md` を参照してください。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Step 6: 動作確認
+bashcd ~/ClaudeWorkspace/factory
+claude
+Claude Code が起動したら、以下を確認します。
+
+/status と入力 → サンドボックスが有効であること
+何か簡単な指示を出す → コマンド実行前に許可を求められること
+Ctrl+C で終了
+
+
+Step 7: CLAUDE.md の編集
+factory/CLAUDE.md をテキストエディタで開き、
+## Environment セクションを自分の環境に合わせて編集します。
+
+トラブルシューティング
+claude: command not found
+PATH が通っていません。以下を試してください:
+bash# インストール先を探す
+which claude
+ls ~/.local/bin/claude
+ls ~/.claude/bin/claude
+見つかったパスを PATH に追加:
+bashecho 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+Hook が動作しない
+改行コードを確認してください:
+bashfile ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+「with CRLF line terminators」と出た場合:
+bashsed -i '' 's/\r$//' ~/ClaudeWorkspace/factory/.claude/hooks/check_package_install.sh
+=
